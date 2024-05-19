@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.10)
+project(rk2)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+add_executable(rk2 Program.cpp ConceptualExample.cpp MediaPlayer01.cpp MediaPlayer02.cpp PluggableAdapterDesign.cpp)

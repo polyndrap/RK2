@@ -1,0 +1,3 @@
+/home/polyndrap/rk2/build/CMakeFiles/rk2.dir
+/home/polyndrap/rk2/build/CMakeFiles/edit_cache.dir
+/home/polyndrap/rk2/build/CMakeFiles/rebuild_cache.dir
