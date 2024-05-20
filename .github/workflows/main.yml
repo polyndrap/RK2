@@ -1,0 +1,25 @@
+name: Actions for RK2
+run-name: ${{ github.actor }} is running Prototype
+on: [push]
+
+jobs:
+  prototype_cont:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Adding gtest
+      run: git clone https://github.com/google/googletest.git third-party/gtest -b release-1.11.0
+
+    - name: Config with tests
+      run: cmake -B ${{github.workspace}}/.build -DBUILD_TESTS=ON
+
+    - name: Build
+      run: cmake --build ${{github.workspace}}/.build
+
+    - name: Run programm.cpp
+      run: ${{github.workspace}}/.build/prototype
+
+    - name: Run tests
+      run: ${{github.workspace}}/.build/check
