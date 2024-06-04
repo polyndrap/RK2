@@ -34,13 +34,12 @@ TEST(ConceptualExample, TestClientCode) {
     auto adaptee = std::make_shared<Adaptee>();
     auto adapter = std::make_shared<Adapter>(adaptee);
 
-    std::ostringstream oss;
-    std::streambuf* oldCoutBuffer = std::cout.rdbuf(oss.rdbuf());
+    testing::internal::CaptureStdout();
 
     clientCode(target);
     clientCode(std::static_pointer_cast<Target>(adapter));
 
-    std::cout.rdbuf(oldCoutBuffer);
+    std::string output = testing::internal::GetCapturedStdout();
 
     std::string expectedOutput =
         "Target: The target's default behavior.\n"
@@ -49,7 +48,7 @@ TEST(ConceptualExample, TestClientCode) {
         "Client: But I can work with the Adaptee via the Adapter:\n"
         "Adapter: (TRANSLATED) .eetpadA eht fo roivaheb laicepS\n";
 
-    ASSERT_EQ(oss.str(), expectedOutput);
+    ASSERT_EQ(output, expectedOutput);
 }
 
 
