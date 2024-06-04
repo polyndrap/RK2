@@ -30,21 +30,26 @@ TEST(ConceptualExample, TestConceptualExample02) {
 }
 
 TEST(ConceptualExample, TestClientCode) {
-  auto target = std::make_shared<Target>();
-  auto adaptee = std::make_shared<Adaptee>();
-  auto adapter = std::make_shared<Adapter>(adaptee);
+    auto target = std::make_shared<Target>();
+    auto adaptee = std::make_shared<Adaptee>();
+    auto adapter = std::make_shared<Adapter>(adaptee);
 
-  clientCode(target);
-  clientCode(adapter);
+    std::ostringstream oss;
+    std::streambuf* oldCoutBuffer = std::cout.rdbuf(oss.rdbuf());
 
-  ASSERT_OUTPUT(
-      "Target: The target's default behavior.nn"
-      "Client: I can work fine with the Target objectn"
-      "Adaptee: .eetpadA eht fo roivaheb laicepSnn"
-      "Client: The Adaptee class has an incompatible interface:n"
-      "Client: But I can work with the Adaptee via the Adapter:n"
-      "Adapter: (TRANSLATED) .eetpadA eht fo roivaheb laicepSn"
-  );
+    clientCode(target);
+    clientCodeWithAdapter(adapter);
+
+    std::cout.rdbuf(oldCoutBuffer);
+
+    std::string expectedOutput =
+        "Target: The target's default behavior.\n"
+        "Client: I can work fine with the Target object\n"
+        "Client: The Adaptee class has an incompatible interface:\n"
+        "Client: But I can work with the Adaptee via the Adapter:\n"
+        "Adapter: (TRANSLATED) .eetpadA eht fo roivaheb laicepS\n";
+
+    ASSERT_EQ(oss.str(), expectedOutput);
 }
 
 
