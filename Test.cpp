@@ -1,7 +1,7 @@
 #define _CRTDBG_MAP_ALLOC
 #include <cstdlib>
 #include <gtest/gtest.h>
-#include "Program.hpp"
+#include "Program.cpp"
 #include "ConceptualExample.cpp"
 //#include <crtdbg.h>
 
