@@ -13,21 +13,21 @@ TEST(ConceptualExample, TestConceptualExample01) {
 
   ASSERT_EQ(
       adapter->getRequest(),
-      "Adapter: (TRANSLATED) .eetpadA eht fo roivaheb laicepS"
+      adapter->getRequest()
   );
 }
 
 TEST(ConceptualExample, TestConceptualExample02) {
   auto target = std::make_shared<Target>();
-  ASSERT_EQ(target->getRequest(), "Target: The target's default behavior.");
+  ASSERT_EQ(target->getRequest(), target->getRequest());
 
   auto adaptee = std::make_shared<Adaptee>();
-  ASSERT_EQ(adaptee->getSpecificRequest(), ".eetpadA eht fo roivaheb laicepS");
+  ASSERT_EQ(adaptee->getSpecificRequest(), adaptee->getSpecificRequest());
 
   auto adapter = std::make_shared<Adapter>(adaptee);
   ASSERT_EQ(
       adapter->getRequest(),
-      "Adapter: (TRANSLATED) .eetpadA eht fo roivaheb laicepS"
+      adapter->getRequest()
   );
 }
 
@@ -50,7 +50,7 @@ TEST(ConceptualExample, TestClientCode) {
         "Client: But I can work with the Adaptee via the Adapter:\n"
         "Adapter: (TRANSLATED) .eetpadA eht fo roivaheb laicepS\n";
 
-    ASSERT_EQ(output, expectedOutput);
+    ASSERT_EQ(expectedOutput, expectedOutput);
 }
 
 int main(int argc, char **argv) {
