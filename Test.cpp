@@ -38,7 +38,7 @@ TEST(ConceptualExample, TestClientCode) {
     std::streambuf* oldCoutBuffer = std::cout.rdbuf(oss.rdbuf());
 
     clientCode(target);
-    clientCodeWithAdapter(adapter);
+    clientCode(std::static_pointer_cast<Target>(adapter));
 
     std::cout.rdbuf(oldCoutBuffer);
 
