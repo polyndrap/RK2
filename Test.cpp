@@ -37,7 +37,7 @@ TEST(ConceptualExample, TestClientCode) {
     testing::internal::CaptureStdout();
 
     clientCode(target);
-    clientCode(std::static_pointer_cast<Target>(adapter));
+    clientCode(adapter);
 
     std::string output = testing::internal::GetCapturedStdout();
 
