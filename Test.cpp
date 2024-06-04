@@ -1,8 +1,10 @@
 #define _CRTDBG_MAP_ALLOC
 #include <cstdlib>
 #include <gtest/gtest.h>
-#include "Program.cpp"
+#include "MediaPlayer01.cpp"
+#include "MediaPlayer02.cpp"
 #include "ConceptualExample.cpp"
+#include "PluggableAdapterDesign.cpp"
 //#include <crtdbg.h>
 
 TEST(ConceptualExample, TestConceptualExample01) {
